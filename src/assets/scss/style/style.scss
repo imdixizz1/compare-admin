@@ -1,0 +1,583 @@
+@import "../abstracts/variabale";
+
+body {
+  background-color: #FBF7F4;
+}
+
+
+
+.mainAdminGrid {
+
+  /* ============= Sidebar CSS ============= */
+
+
+  & .mainSidebar {
+
+
+    color: $darkGray;
+    height: 100vh;
+    padding: 25px;
+    font-size: 15px;
+    transition: .4s;
+
+    @include maxMediaQuery($lg) {
+      position: relative;
+      z-index: 4;
+      padding: 0;
+      width: 250px;
+      box-shadow: 11px 2px 12px rgba(15, 34, 58, 0.121)
+    }
+
+    /* Side Menu Toggle JS CSS */
+    & .sideBar {
+      width: 100%;
+      background-color: $light;
+      height: 100%;
+      box-shadow: 0 2px 4px #0f223a1f;
+      overflow-x: auto;
+
+      & .sideBarLogo {
+        padding: 15px;
+
+        & .smallLogo {
+          display: none;
+          width: 30px;
+          margin: auto;
+        }
+
+        & .logo {
+          display: block;
+          width: 100px;
+          margin: auto;
+        }
+
+        & .closeIcon {
+          display: none;
+        }
+
+        @include maxMediaQuery($lg) {
+          display: flex;
+          justify-content: space-between;
+
+          & .closeIcon {
+            display: block;
+            font-size: 18px;
+          }
+
+          & .logo {
+            margin: unset;
+          }
+
+          & .blackBox {
+            height: 100vh;
+            width: 100%;
+            background-color: #000000b0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            transition: .2s;
+          }
+        }
+      }
+
+      & .navigation {
+        & .mainMenu {
+          &>li {
+            &>.activeMenu {
+              color: $second !important;
+              background-color: $lightGray;
+            }
+
+            &>a {
+              & div {
+                & span {
+                  display: inline;
+                }
+              }
+
+              &>i {
+                display: block;
+              }
+
+              &:hover {
+                color: $second;
+                background-color: $lightGray;
+              }
+            }
+          }
+
+          & li {
+            margin: 5px 0;
+
+            & a {
+              color: $darkGray;
+              padding: 10px 25px;
+              transition: .4s;
+
+              &:hover {
+                color: $second;
+              }
+
+              & i {
+                font-size: 18px;
+                margin-right: 10px;
+              }
+
+            }
+
+            & .subMenu {
+              padding-left: 28px;
+              padding-top: 10px;
+
+              & .subhead {
+                text-align: start;
+                display: none;
+                margin-bottom: 20px;
+                cursor: pointer;
+                font-size: 16px;
+              }
+
+              & li {
+                & a {
+                  position: relative;
+
+                  &::before {
+                    content: "";
+                    width: 6px;
+                    height: 2px;
+                    background-color: $darkGray;
+                    position: absolute;
+                    left: 2px;
+                    top: 50%;
+                    transition: .4s;
+                    opacity: 1;
+                  }
+                }
+              }
+
+            }
+          }
+        }
+
+      }
+
+    }
+  }
+
+  /*Small Size*/
+  &.webAdminGrid {
+    & .mainSidebar {
+      padding: 25px 25px 0 25px;
+      height: 100%;
+
+      @include maxMediaQuery($lg) {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 60px;
+        box-shadow: unset;
+        z-index: 4;
+        padding: 0;
+      }
+
+      @include maxMediaQuery($md) {
+        width: 50px;
+      }
+
+
+      & .sideBar {
+        height: 100%;
+        overflow: unset;
+
+        @include maxMediaQuery($lg) {
+          overflow: auto;
+        }
+      }
+
+
+      & .sideBarLogo {
+
+        @include maxMediaQuery($md) {
+          padding: 12px;
+        }
+
+        & .logo {
+          display: none;
+        }
+
+        & .smallLogo {
+          display: block;
+        }
+
+        @include maxMediaQuery($lg) {
+          & .closeIcon {
+            display: none;
+          }
+
+          & .blackBox {
+            left: -100%;
+          }
+        }
+      }
+
+      & .navigation {
+        & .mainMenu {
+          &>li {
+            position: relative;
+
+            &>a {
+              padding-left: 18px;
+
+              @include maxMediaQuery($md) {
+                padding-left: 15px;
+              }
+
+              & div {
+                & span {
+                  display: none;
+                }
+
+                & i {
+                  font-size: 24px;
+
+                  @include maxMediaQuery($md) {
+                    font-size: 20px;
+                  }
+                }
+              }
+
+              &>i {
+                font-size: 24px;
+                display: none;
+              }
+            }
+
+            &:hover .subMenu {
+              display: block !important;
+            }
+
+            & .subMenu {
+              position: absolute;
+              top: 0;
+              left: 100%;
+              padding-left: 0;
+              padding: 18px 10px 10px;
+              background-color: $light;
+              white-space: nowrap;
+              min-width: 200px;
+              box-shadow: 0 2px 4px #0f223a1f;
+              z-index: 1;
+
+              @include maxMediaQuery($md) {
+                min-width: 160px;
+              }
+
+              & .subhead {
+                font-weight: 600;
+                display: block;
+
+                @include maxMediaQuery($md) {
+                  margin-bottom: 10px;
+                  font-size: 14px;
+                }
+              }
+
+              & li {
+                & a {
+                  position: relative;
+                  padding-left: 20px;
+
+                  @include maxMediaQuery($md) {
+                    padding: 5px 15px;
+                    font-size: 12px;
+                  }
+
+                  &::before {
+                    display: none;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+
+  & .mainAdmin {
+    height: 100vh;
+    overflow: auto;
+    padding: 0 30px 0 15px;
+
+    @include maxMediaQuery($md) {
+      padding: 0 10px 0 3px;
+    }
+
+    /* ============= Navbar CSS ============= */
+
+    & .mainNavbar {
+      position: sticky;
+      top: 0;
+      margin: 25px 0;
+      transition-delay: 1s;
+      z-index: 3;
+
+      @include maxMediaQuery($md) {
+        margin: 10px 0;
+      }
+
+      & .navBar {
+
+        & .innerNavbar {
+          background-color: $light;
+          height: 100%;
+          padding: 13px 30px;
+          box-shadow: 0 0 12px rgba(15, 34, 58, 0.121);
+
+          & .rightNav {
+            & .adminProfile {
+              & .adminPic {
+                height: 40px;
+                width: 40px;
+                border-radius: 50%;
+                overflow: hidden;
+              }
+
+              & .adminDetails {
+                & h6 {
+                  font-size: 16px;
+                }
+
+                & p {
+                  font-size: 14px;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      @include maxMediaQuery($md) {
+        & .navBar {
+          // padding: 12px 0;
+
+          & .innerNavbar {
+            padding: 8px 10px;
+
+            & .rightNav {
+              & .adminProfile {
+                & .adminPic {
+                  height: 30px;
+                  width: 30px;
+                }
+
+                & .adminDetails {
+                  & h6 {
+                    font-size: 12px;
+                  }
+
+                  & p {
+                    font-size: 10px;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+
+    /* ============= Admin CSS ============= */
+    .adminStart {
+      max-height: calc(100vh - 117px);
+      padding: 15px 25px;
+    }
+  }
+
+
+  /* ============= Dashboard CSS ============= */
+  .mainDashboard {
+
+    & .dashBoardHead {
+      @include maxMediaQuery($md) {
+        & h3 {
+          font-size: 18px;
+        }
+
+        & p {
+          font-size: 14px;
+        }
+      }
+    }
+
+    & .mainDashbox {
+      margin-top: 15px;
+
+      & .dashBox {
+        padding: 10px 15px;
+        background-color: $light;
+        box-shadow: $prime-shadow;
+
+        & .boxHead {
+          & p {
+            font-size: 16px;
+            font-weight: bold;
+            color: $darkGray;
+
+            @include maxMediaQuery($md) {
+              font-size: 14px;
+            }
+          }
+        }
+
+        & .boxBody {
+          margin-top: 15px;
+
+          @include maxMediaQuery($md) {
+            margin-top: 7px;
+
+            & h2 {
+              font-size: 20px;
+            }
+          }
+        }
+
+        & .boxFooter {
+          display: flex;
+          align-items: end;
+          justify-content: space-between;
+
+          & .boxLink {
+            & a {
+              border-bottom: solid 1px;
+              font-size: 14px;
+
+              @include maxMediaQuery($md) {
+                font-size: 12px;
+              }
+            }
+          }
+
+          & .boxIcon {
+            width: 55px;
+            height: 55px;
+
+            @include maxMediaQuery($md) {
+              width: 40px;
+              height: 40px;
+            }
+          }
+        }
+      }
+    }
+
+    & #chart {
+      max-height: 500px !important;
+      overflow: hidden;
+
+      & .apexcharts-toolbar {
+        z-index: 3 !important;
+      }
+
+      & .apexcharts-toolbar {
+
+        & div[title="Selection Zoom"],
+        & div[title="Panning"] {
+          display: none;
+        }
+
+        &>div {
+          margin: 0 5px;
+
+          & svg {
+            fill: $second;
+            height: 30px;
+            width: 30px;
+
+            @include maxMediaQuery($md) {
+              width: 24px;
+              height: 24px;
+            }
+          }
+        }
+      }
+
+    }
+  }
+  .mainAdminProfile {
+    & .adminProfileBox {
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      border-radius: 15px;
+      padding: 30px 20px;
+      background-color: #0f6f8515;
+      & .adminImg {
+        & img {
+          height: 250px;
+          width: 250px;
+          border-radius: 50%;
+        }
+      }
+      & .adminData {
+        margin-top: 10px;
+      }
+    }
+  }
+}
+
+/* ============= Product CSS ============= */
+.productShowColorDetails {
+  padding: 30px 20px;
+  margin: 20px 0;
+  &~.mainTable{
+    max-height: 444px !important;
+  }
+  background-color: $light;
+  box-shadow: 0px 0px 10px #0000002c;
+ & .productDefault{
+   font-weight: bold;
+   font-size: 20px;
+   @include maxMediaQuery($md){
+    font-size: 12px;
+   }
+   & span:first-child{
+     color: $second;
+  }
+  & span:last-child{
+    text-transform: capitalize;
+  }
+ }
+
+}
+
+.allProductColor{
+  display: flex;
+  & .userProfile{
+    margin-right: 10px;
+  }
+}
+
+.colorRound{
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+}
+
+.cursor{
+  cursor: pointer!important;
+}
+
+.mainMultiSelector {
+  position: relative;
+  border-radius: 10px;
+  border: dashed #A86464 2px;
+  padding: 20px 30px !important;
+  margin: 20px 0 !important;
+}
+
+.mainAddArticle{
+  margin-bottom: 30px!important;
+}
