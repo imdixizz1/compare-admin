@@ -1,6 +1,6 @@
 export const key = "0LF8bPi5BnOgl3JjLGcfhfU3N7TAk8rJ";
 // 
-export const baseURL = "https://admin.compares360.com/";
+export const baseURL = "https://admin.compareuniverse.com/";
 // export const baseURL = "http://localhost:5000/";
 
 
